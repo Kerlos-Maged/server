@@ -50,6 +50,26 @@ const studentSchema = new mongoose.Schema({
     trim: true,
     maxlength: [20, 'Grade/Year cannot exceed 20 characters']
   },
+  phase1: {
+    type: Boolean,
+    default: false
+  },
+  phase2: {
+    type: Boolean,
+    default: false
+  },
+  phase3: {
+    type: Boolean,
+    default: false
+  },
+  phase4: {
+    type: Boolean,
+    default: false
+  },
+  phase5: {
+    type: Boolean,
+    default: false
+  },
   registrationDate: {
     type: Date,
     default: Date.now
@@ -68,6 +88,11 @@ studentSchema.index({ email: 1 });
 studentSchema.index({ state: 1 });
 studentSchema.index({ country: 1 });
 studentSchema.index({ schoolName: 1 });
+studentSchema.index({ phase1: 1 });
+studentSchema.index({ phase2: 1 });
+studentSchema.index({ phase3: 1 });
+studentSchema.index({ phase4: 1 });
+studentSchema.index({ phase5: 1 });
 studentSchema.index({ status: 1 });
 
 // Ensure virtual fields are serialized

@@ -4,11 +4,9 @@ const Student = require('../models/Student');
 
 const router = express.Router();
 
-// Validation middleware
-
 
 // Register a new student for competition
-router.post('/register', async (req, res) => {
+router.post('/register', validateStudentRegistration, async (req, res) => {
   try {
 
     const {
@@ -20,7 +18,12 @@ router.post('/register', async (req, res) => {
       state,
       country,
       school,
-      grade
+      grade,
+      phase1,
+      phase2,
+      phase3,
+      phase4,
+      phase5
     } = req.body;
 
     // Check if student already exists with this email
@@ -42,7 +45,12 @@ router.post('/register', async (req, res) => {
       state,
       country,
       schoolName: school,
-      grade
+      grade,
+      phase1: phase1 || false,
+      phase2: phase2 || false,
+      phase3: phase3 || false,
+      phase4: phase4 || false,
+      phase5: phase5 || false
     });
 
     await student.save();
@@ -64,6 +72,11 @@ router.post('/register', async (req, res) => {
         country: student.country,
         schoolName: student.schoolName,
         grade: student.grade,
+        phase1: student.phase1,
+        phase2: student.phase2,
+        phase3: student.phase3,
+        phase4: student.phase4,
+        phase5: student.phase5,
         registrationDate: student.registrationDate
       }
     });

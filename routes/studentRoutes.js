@@ -6,7 +6,7 @@ const router = express.Router();
 
 
 // Register a new student for competition
-router.post('/register', validateStudentRegistration, async (req, res) => {
+router.post('/register', async (req, res) => {
   try {
 
     const {
